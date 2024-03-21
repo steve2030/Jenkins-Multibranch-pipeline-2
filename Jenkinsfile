@@ -6,35 +6,26 @@ pipeline {
             steps {
                 // Checkout code from your version control system
                 git 'https://github.com/steve2030/Jenkins-Multibranch-pipeline-2'
-
-
             }
         }
 
         stage('Installations') {
             steps {
-
                 // Install Node.js and npm
                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
                 sh 'sudo apt-get install -y nodejs'
 
                 // Install project dependencies
                 sh 'npm install'
-
-
-
             }
         }
 
         stage('Build the App') {
             steps {
                 // Build the Vue.js application
-                sh 'npm run build
-
-                }
+                sh 'npm run build'
             }
         }
-
 
         stage('Static Code Analysis') {
             steps {
@@ -44,6 +35,7 @@ pipeline {
                 }
             }
         }
+
         stage('Build Docker Image') {
             steps {
                 // Build Docker image
@@ -52,6 +44,7 @@ pipeline {
                 }
             }
         }
+
         stage('Push Docker Image to GCR') {
             steps {
                 // Push Docker image to Google Container Registry (GCR)
