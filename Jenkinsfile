@@ -2,10 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Github Checkout') {
             steps {
                 // Checkout code from your version control system
                 git 'https://github.com/steve2030/Jenkins-Multibranch-pipeline-2'
+
+
+            }
+        }
+
+        stage('Installations') {
+            steps {
 
                 // Install Node.js and npm
                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
@@ -14,10 +21,21 @@ pipeline {
                 // Install project dependencies
                 sh 'npm install'
 
-                // Build the Vue.js application
-                sh 'npm run build'
+
+
             }
         }
+
+        stage('Build the App') {
+            steps {
+                // Build the Vue.js application
+                sh 'npm run build
+
+                }
+            }
+        }
+
+
         stage('Static Code Analysis') {
             steps {
                 // Execute SonarQube scanner for static code analysis
