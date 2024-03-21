@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Checkout code from your version control system
-                git 'https://github.com/steve2030/CI-CD-using-Jenkins-and-ArgoCd'
+                git 'https://github.com/steve2030/Jenkins-Multibranch-pipeline-2'
 
                 // Install Node.js and npm
                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
