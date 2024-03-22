@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Build Docker image from Dockerfile
                 script {
-                    docker.build('argocd-image', ' .')
+                    docker.build('argocd-image', '.')
                 }
             }
         }
