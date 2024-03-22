@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Building Docker image from Dockerfile
-                    docker.build('school', '.')
+                    docker.build('school.build', '.')
                 }
             }
         }
@@ -15,7 +15,8 @@ pipeline {
             steps {
                 script {
                     // Tagging the Docker image
-                    docker.image('school').tag('steve3020/school:latest')
+
+                    docker.image('school:build').tag('steve3020/school:latest', 'latest')
                 }
             }
         }
