@@ -6,7 +6,9 @@ pipeline {
             steps {
                 // Install project dependencies
                 sh '''
-                    echo "uzapoint" | sudo -S bash -c "npm install"
+                    // Use `sudo -S` to read password from standard input
+                    // Provide password using `echo`
+                    echo "uzapoint" | sudo -S npm install
                 '''
             }
         }
@@ -15,7 +17,8 @@ pipeline {
             steps {
                 // Build the Vue.js application
                 sh '''
-                    echo "uzapoint" | sudo -S bash -c "npm run build"
+
+                    echo "uzapoint" | sudo -S npm run build
                 '''
             }
         }
