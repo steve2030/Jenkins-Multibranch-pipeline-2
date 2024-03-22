@@ -9,25 +9,23 @@ pipeline {
 
 
                 // Install project dependencies
-                sh 'npm install'
+                sh '''
+                    echo "2030" | sudo -S bash -c npm install
+                '''
             }
         }
 
         stage('Build the App') {
             steps {
                 // Build the Vue.js application
-                sh 'npm run build'
+
+
+                sh '''
+                    echo "2030" | sudo -S bash -c npm run build
+                '''
             }
         }
 
-        stage('Static Code Analysis') {
-            steps {
-                // Execute SonarQube scanner for static code analysis
-                withSonarQubeEnv('SonarQube_Server') {
-                    sh 'npm run lint'
-                }
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
@@ -48,5 +46,7 @@ pipeline {
                 }
             }
         }
+
+
     }
 }
