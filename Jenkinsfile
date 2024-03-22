@@ -2,22 +2,30 @@ pipeline {
     agent any
 
     stages {
-        stage('Build Docker Image') {
+        stage('Build image from Dockerfile') {
             steps {
-                // Build Docker image from Dockerfile
-                 script {
-                    docker.build('argocd-image')
+                script {
+                    // Building Docker image from Dockerfile
+                    docker.build('argo-image:latest', '.')
                 }
-
             }
         }
 
-        stage('Push Docker Image to GCR') {
+        stage('Tag the Image ') {
             steps {
-                // Push Docker image to Google Container Registry (GCR)
                 script {
-                    docker.withRegistry('https://gcr.io/uzapoint-microservices/', 'gcr_credentials') {
-                        docker.image('argocd-image').push('latest')
+                    // Tagging the Docker image
+                    docker.image('argo-image:latest').tag('steve3020/argo:latest')
+                }
+            }
+        }
+
+        stage('Push to DockerHub') {
+            steps {
+                script {
+                    // Pushing the Docker image to Docker Hub
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
+                        docker.image('steve3020/argo-image:latest').push()
                     }
                 }
             }

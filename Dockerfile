@@ -1,17 +1,15 @@
-# Use Nginx as the base image
-FROM nginx:latest
+# Stage 1: Build the Vue application
+#  1. Build the application
+FROM node:14 AS Build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+#  Serve the built application with Nginx
+FROM nginx:alpine
+COPY --from=build app/dist /usr/share/nginx/html
 
-# Set the working directory inside the container
-WORKDIR /usr/share/nginx/html
-
-# Copy the contents of the 'dist' directory from your local machine to the working directory in the container
-COPY ./dist/ .
-
-# Expose port 80 to allow incoming connections
+# EXPOSE 8080
 EXPOSE 80
-
-# Start Nginx when the container starts
 CMD ["nginx", "-g", "daemon off;"]
-
-
-
