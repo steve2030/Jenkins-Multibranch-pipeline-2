@@ -11,15 +11,7 @@ pipeline {
             }
         }
 
-        stage('Tag the Image') {
-            steps {
-                script {
-                    // Tagging the Docker image
 
-                    docker.image('school:build').tag('steve3020/school:latest', 'latest')
-                }
-            }
-        }
 
         stage('Push to DockerHub') {
             steps {
