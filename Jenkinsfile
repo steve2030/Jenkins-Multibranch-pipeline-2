@@ -10,7 +10,7 @@ pipeline {
 
                 // Install project dependencies
                 sh '''
-                    echo "2030" | sudo -S bash -c npm install
+                    echo "uzapoint" | sudo -S bash -c npm install
                 '''
             }
         }
@@ -21,7 +21,7 @@ pipeline {
 
 
                 sh '''
-                    echo "2030" | sudo -S bash -c npm run build
+                    echo "uzapoint" | sudo -S bash -c npm run build
                 '''
             }
         }
