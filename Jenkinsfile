@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Building Docker image from Dockerfile
-                    docker.build('argo-image:latest', '.')
+                    docker.build('school:build', '.')
                 }
             }
         }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     // Tagging the Docker image
-                    docker.image('argo-image:latest').tag('steve3020/argo:latest')
+                    docker.image('school:build').tag('steve3020/school:latest')
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
                 script {
                     // Pushing the Docker image to Docker Hub
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
-                        docker.image('steve3020/argo:latest').push()
+                        docker.image('steve3020/school:latest').push()
                     }
                 }
             }
