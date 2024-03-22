@@ -18,7 +18,7 @@ pipeline {
                 script {
                     // Pushing the Docker image to Docker Hub
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
-                        docker.image('steve3020/school:latest').push()
+                        docker.image('steve3020/school.build').push()
                     }
                 }
             }
