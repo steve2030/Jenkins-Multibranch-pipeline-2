@@ -2,15 +2,11 @@ pipeline {
     agent any
 
     stages {
-
-
         stage('Installations') {
             steps {
-
-
                 // Install project dependencies
                 sh '''
-                    echo "uzapoint" | sudo -S bash -c npm install
+                    sudo -S bash -c "npm install"
                 '''
             }
         }
@@ -18,14 +14,11 @@ pipeline {
         stage('Build the App') {
             steps {
                 // Build the Vue.js application
-
-
                 sh '''
-                    echo "uzapoint" | sudo -S bash -c npm run build
+                    sudo -S bash -c "npm run build"
                 '''
             }
         }
-
 
         stage('Build Docker Image') {
             steps {
@@ -46,7 +39,5 @@ pipeline {
                 }
             }
         }
-
-
     }
 }
