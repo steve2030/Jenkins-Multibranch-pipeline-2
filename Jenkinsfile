@@ -5,9 +5,11 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build Docker image from Dockerfile
-                script {
-                    docker.build('argocd-image', '.')
-                }
+                sh '''
+                    JD_IMAGE="argocd-image"
+                    docker build -t "$JD_IMAGE" .
+                '''
+
             }
         }
 
