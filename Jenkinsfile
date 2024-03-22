@@ -6,20 +6,16 @@ pipeline {
             steps {
                 script {
                     // Building Docker image from Dockerfile
-                    docker.build('school', '.')
+                    docker.build('school:latest', '.')
                 }
             }
         }
 
         stage('Tag the Image') {
             steps {
-                script {
-                    // Tagging the Docker image
 
 
-                    docker.image('school:latest').tag('steve3020/school:1.0.0')
-
-                }
+                  sh 'docker tag school steve3020/school:new'
             }
         }
 
