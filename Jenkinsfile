@@ -2,12 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Github Checkout') {
-            steps {
-                // Checkout code from your version control system
-                git 'https://github.com/steve2030/Jenkins-Multibranch-pipeline-2'
-            }
-        }
+
 
         stage('Installations') {
             steps {
