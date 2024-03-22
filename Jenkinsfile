@@ -7,7 +7,7 @@ pipeline {
                 // Build Docker image from Dockerfile
                 sh '''
                     JD_IMAGE="argocd-image"
-                    sudo docker build -t "$JD_IMAGE" .
+                    docker build -t "$JD_IMAGE" .
                 '''
 
             }
