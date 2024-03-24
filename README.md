@@ -6,7 +6,8 @@ This is a description of my awesome project. It does amazing things and solves i
 
 Here is a screenshot of the dashboard:
 
-![Dashboard](https://imgur.com/a/EkFAvVU)
+![Dashboard](![Screenshot](https://i.imgur.com/pHylZlX.jpg)
+)
 
 ### Graphs
 
