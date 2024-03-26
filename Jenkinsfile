@@ -2,6 +2,15 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Unit Testing') {
+            steps {
+                // Add your unit testing commands here
+                sh 'npm install' // Example command to install dependencies
+                sh 'npm test'    // Example command to run unit tests
+            }
+             }
+
         stage('Build image from Dockerfile') {
             steps {
                 script {
